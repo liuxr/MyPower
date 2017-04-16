@@ -1,0 +1,20 @@
+﻿3des 加密密钥
+keyjingcai2l.8ke520lhJin.Cai@ss283.229808e
+接口地址
+http://520jingcai.com/index.php
+
+
+http://php.net/manual/zh/function.chr.php
+
+http://520jingcai.com/index.php?m=Api&c=Alipay&a=alipaylog&inputparam=IWKZZd-XuwSgXLyOweGOGtAKZqr9kwsSsdD9nHz88raSqHCYRqfnn4zVGTuv407XE7RcBwDIHAv7zJ4udOvDSC3LosQQ86yOQHQ1HTrReM-zvWYmSrWs4N6SW-ffXcODOX9lx6exLU64Me021TmmSHEj3J--UskbSaAcvJm4D9kjJxARJl0NaBCvtdyZFmsuuqK5vGaHEBFXwFH05ApGp-iCXXjh98VpBeKmAlwkgZXf27fp4_Gg5PwOvEDiwWcOH911xhPl1IiC-_e8ynO5AZ-8I--UjWeoiUbZUYooM6j6em8dlBKz1c4v-dUE0vDeB8I2aJWx0yL4GwYl6Gg-j5avabb29Kn9SG1MMsbKhVNKj9Q3cIr2Cekjdyilb4HqsdD9nHz88rZvyXRRvASgAy6oSMmv87nB_k8xSFNIDKEg6Fg07HgQfS_6OjZ-8-DA
+
+
+8
+
+{"account":"dejin6334@163.com"}
+keyjingcai2l.8ke520lhJin.Cai@ss283.229808e
+Resource id #2
+塀数?/剧凧叒? 藁耕眒B?.0跒?
+iULK/dkvAr7nBRqESoWqyg3eu7j7E7FtAELKLjDanvY=
+iULK_dkvAr7nBRqESoWqyg3eu7j7E7FtAELKLjDanvY
+iULK_dkvAr7nBRqESoWqyg3eu7j7E7FtAELKLjDanvY
