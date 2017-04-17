@@ -51,10 +51,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lvResult = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnQuery = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
@@ -265,9 +267,11 @@
             this.lvResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lvResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
+            this.columnHeader9,
+            this.columnHeader6,
+            this.columnHeader8,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6,
             this.columnHeader7});
             this.lvResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvResult.FullRowSelect = true;
@@ -283,7 +287,18 @@
             // columnHeader3
             // 
             this.columnHeader3.Text = "申请号";
-            this.columnHeader3.Width = 150;
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.DisplayIndex = 1;
+            this.columnHeader6.Text = "专利名称";
+            this.columnHeader6.Width = 300;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "地址";
+            this.columnHeader8.Width = 250;
             // 
             // columnHeader4
             // 
@@ -295,15 +310,16 @@
             this.columnHeader5.Text = "类型";
             this.columnHeader5.Width = 100;
             // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "专利名称";
-            this.columnHeader6.Width = 350;
-            // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "主分类号";
             this.columnHeader7.Width = 100;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.DisplayIndex = 2;
+            this.columnHeader9.Text = "申请人";
+            this.columnHeader9.Width = 200;
             // 
             // panel2
             // 
@@ -436,5 +452,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }

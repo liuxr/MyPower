@@ -191,6 +191,8 @@ namespace MyPay
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            me.QCC();
+            return;
             try
             {
                 //时间升序
@@ -203,7 +205,7 @@ namespace MyPay
                 foreach (var m in list)
                 {
                     ListViewItem item = new ListViewItem(new string[] {
-                    m.PatentNo,m.ApplyDate,m.PatentType,m.Name,m.OrginalNo });
+                    m.PatentNo,m.ApplyName,m.Name,m.Address,m.ApplyDate,m.PatentType,m.OrginalNo });
                     lvResult.Items.Add(item);
                 }
                 Application.DoEvents();

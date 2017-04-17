@@ -144,14 +144,16 @@ namespace MyPay
                 using (IDbConnection con = new SQLiteConnection(sb.ToString()))
                 {
                     con.Open();
-                    string sql = "insert into 'info' (PatentNo,ApplyDate,PatentType,Name,OrginalNo)  values (@PatentNo,@ApplyDate,@PatentType,@Name,@OrginalNo)";
+                    string sql = "insert into 'info' (PatentNo,ApplyDate,PatentType,Name,OrginalNo,Address,ApplyName)  values (@PatentNo,@ApplyDate,@PatentType,@Name,@OrginalNo,@Address,@ApplyName)";
                     int i = Dapper.SqlMapper.Execute(con, sql, new
                     {
                         PatentNo = model.PatentNo,
                         ApplyDate = model.ApplyDate,
                         PatentType = model.PatentType,
                         Name = model.Name,
-                        OrginalNo = model.OrginalNo
+                        OrginalNo = model.OrginalNo,
+                        Address=model.Address,
+                        ApplyName=model.ApplyName
                     });
                     con.Close();
                 }

@@ -22,7 +22,7 @@ namespace MyPower
 
         private string Year = "2017";
 
-        private string urlTemp = "http://so.baiten.cn/results?q=ad%253A%2528{0}%2529%2520and%2520aa%253A%2528%25u5317%25u4EAC%25u5E02%2529&type=14&s=0&law=0&v=l";
+        private string urlTemp = "http://so.baiten.cn/results?q=ad%253A%2528{0}%2529%2520and%2520aa%253A%2528%25u5317%25u4EAC%25u5E02%2529&type=14&s=0&law=0&v=s";
 
         public void Run(string year)
         {
@@ -123,36 +123,11 @@ namespace MyPower
             HtmlWeb htmlWeb = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument htmlDoc = null;
             htmlDoc = htmlWeb.Load(url);
-            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//table//tr[contains(@class,'lm-l-lh')]");
-            if (nodes == null)
-            {
-                return;
-            }
-            foreach (HtmlNode node in nodes)
-            {
-                var node1 = node.SelectSingleNode("td[1]//span[contains(@class,'tcenter')]");
-                var node2 = node.SelectSingleNode("td[2]//a[1]");
-                var node3 = node.SelectSingleNode("td[3]//em[1]");
-                var node4 = node.SelectSingleNode("td[4]//span[1]");
-                var node41 = node.SelectSingleNode("td[4]//a[1]");
-                var node5 = node.SelectSingleNode("td[5]//a[1]");
-                //序号
-                string sNo = node1.InnerText;
-                //获取了专利号(申请号)
-                string patentNo = node2.InnerText;
-                //申请日
-                string applyDate = node3.InnerText;
-                //类型
-                string patentType = node4.InnerText;
-                //名称
-                string name = node41.InnerText;
-                //主分类号
-                string orginalNo = node5.InnerText;
+            
+            DetailView(htmlDoc);
 
-                Console.WriteLine(sNo + "  " + patentNo);
-                infoDal.Insert(new Info() { PatentNo = patentNo,ApplyDate=applyDate,PatentType=patentType,Name=name,OrginalNo=orginalNo });
-            }
             if (onComplate != null)
+
             {
                 onComplate(guid,url);
             }
@@ -176,6 +151,107 @@ namespace MyPower
             catch
             {
                 return 0;
+            }
+        }
+        private void DetailView(HtmlAgilityPack.HtmlDocument htmlDoc)
+        {
+            var nodes = htmlDoc.DocumentNode.SelectNodes("//div[contains(@class,'sm-c clearfix')]");
+            foreach (var n in nodes)
+            {
+                //type
+                var node1_1 = n.SelectSingleNode("ul//li[1]//span[contains(@class,'mlr256')]");
+                //name
+                var node1_2 = n.SelectSingleNode("ul//li[1]//a[contains(@class,'srl-detail-ti f16')]");
+                //patentNo
+                var node1_3 = n.SelectSingleNode("ul//li[1]//a[contains(@class,'srl-detail-an')]");
+                //申请人
+                var node3 = n.SelectSingleNode("ul//li[3]//a");
+                //申请日期
+                var node4 = n.SelectSingleNode("ul//li[4]//a[1]");
+                //主分类号
+                var node4_1 = n.SelectSingleNode("ul//li[4]//a[2]");
+                //地址
+                var node5 = n.SelectSingleNode("ul//li[5]//a");
+                //序号
+               // string sNo = node1_1.InnerText;
+                //获取了专利号(申请号)
+                string patentNo = node1_3.InnerText;
+                //申请日
+                string applyDate = node4.InnerText;
+                //类型
+                string patentType = node1_1.InnerText;
+                //名称
+                string name = node1_2.InnerText;
+                //地址
+                string address = node5.InnerText;
+                //主分类号
+                string orginalNo = node4_1.InnerText;
+                //申请人
+                string applyName = node3.InnerText;
+                Console.WriteLine( patentNo+" "+name);
+                infoDal.Insert(new Info() { PatentNo = patentNo, ApplyDate = applyDate, PatentType = patentType, Name = name, OrginalNo = orginalNo, Address = address, ApplyName = applyName });
+            }
+        }
+
+
+        private void ListView(HtmlAgilityPack.HtmlDocument htmlDoc)
+        {
+            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//table//tr[contains(@class,'lm-l-lh')]");
+            if (nodes == null)
+            {
+                return;
+            }
+            foreach (HtmlNode node in nodes)
+            {
+                var node1 = node.SelectSingleNode("td[1]//span[contains(@class,'tcenter')]");
+                var node2 = node.SelectSingleNode("td[2]//a[1]");
+                var node3 = node.SelectSingleNode("td[3]//em[1]");
+                var node4 = node.SelectSingleNode("td[4]//span[1]");
+                var node41 = node.SelectSingleNode("td[4]//a[1]");
+                var node5 = node.SelectSingleNode("td[5]//a[1]");
+
+                //序号
+                string sNo = node1.InnerText;
+                //获取了专利号(申请号)
+                string patentNo = node2.InnerText;
+                //申请日
+                string applyDate = node3.InnerText;
+                //类型
+                string patentType = node4.InnerText;
+                //名称
+                string name = node41.InnerText;
+                //主分类号
+                string orginalNo = node5.InnerText;
+                Console.WriteLine(sNo + "  " + patentNo);
+                infoDal.Insert(new Info() { PatentNo = patentNo,ApplyDate=applyDate,PatentType=patentType,Name=name,OrginalNo=orginalNo });
+            }
+        }
+
+
+        private string qccUrl = "http://www.qichacha.com/search?key=京东方科技集团股份有限公司";
+        public void QCC()
+        {
+            HtmlWeb htmlWeb = new HtmlWeb();
+            HtmlAgilityPack.HtmlDocument htmlDoc = null;
+            htmlDoc = htmlWeb.Load(qccUrl);
+            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//table//tbody//tr");
+            //m_srchList
+            foreach (var node in nodes)
+            {
+                var node2 = node.SelectSingleNode("td[2]");
+                string[] sts = node2.InnerText.Split('\n');
+                //法人
+                string faren = sts[1].Split('：')[1];
+                //联系方式
+                string phone = sts[2].Split('：')[1];
+
+                var node3 = node.SelectSingleNode("td[3]");
+                //注册资金
+                string money = node3.InnerText;
+
+                var node4 = node.SelectSingleNode("td[4]");
+                //成立时间
+                string createDate = node4.InnerText;
             }
         }
     }

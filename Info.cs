@@ -17,5 +17,9 @@ namespace MyPay
         public string Name { get; set; }
 
         public string OrginalNo { get; set; }
+
+        public string ApplyName { get; set; }
+
+        public string Address { get; set; }
     }
 }
