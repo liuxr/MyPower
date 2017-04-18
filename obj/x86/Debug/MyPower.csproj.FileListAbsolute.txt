@@ -23,3 +23,4 @@ F:\MyPower\MyPower\obj\x86\Debug\MyPower.Properties.Resources.resources
 F:\MyPower\MyPower\obj\x86\Debug\MyPower.csproj.GenerateResource.Cache
 F:\MyPower\MyPower\obj\x86\Debug\MyPower.exe
 F:\MyPower\MyPower\obj\x86\Debug\MyPower.pdb
+F:\MyPower\MyPower\obj\x86\Debug\MyPower.csprojResolveAssemblyReference.cache

@@ -60,6 +60,29 @@ namespace MyPay
             return list;
         }
 
+        /// <summary>
+        /// 根据ID获取账号下的最近一条数据
+        /// </summary>
+        /// <returns></returns>
+        public Info GetOne(string patentNo)
+        {
+            Info model = null;
+            SQLiteConnectionStringBuilder sb = new SQLiteConnectionStringBuilder();
+            sb.DataSource = DataSource;
+            using (IDbConnection con = new SQLiteConnection(sb.ToString()))
+            {
+                con.Open();
+                string sql = "select * from 'Info' where PatentNo='" + patentNo + "' ORDER BY ID DESC LIMIT 1 ";
+                List<Info> list = Dapper.SqlMapper.Query<Info>(con, sql).ToList();
+                if (list != null && list.Count == 1)
+                {
+                    model = list.Single();
+                }
+                con.Close();
+            }
+            return model;
+        }
+
 
         /// <summary>
         /// 根据ID获取账号下的最近一条数据
@@ -169,7 +192,7 @@ namespace MyPay
         /// 更新单条数据
         /// </summary>
         /// <param name="model"></param>
-        public void Update(Order model)
+        public void Update(Info model)
         {
             try
             {
@@ -178,22 +201,14 @@ namespace MyPay
                 using (IDbConnection con = new SQLiteConnection(sb.ToString()))
                 {
                     con.Open();
-                    string sql = "update  'order' set account=@account,createDate=@createDate,name=@name,orderNo=@orderNo,tradeNo=@tradeNo,batchNo=@batchNo,payee=@payee,amount=@amount,state=@state,UpLoadState=@UpLoadState,UpLoadCount=@UpLoadCount,UpLoadError=@UpLoadError,UpLoadDate=@UpLoadDate where ID=@ID";
+                    string sql = "update  'info' set Legal=@Legal,Phone=@Phone,Capital=@Capital,CreateDate=@CreateDate where ID=@ID";
                     int i = Dapper.SqlMapper.Execute(con, sql, new
                     {
-                        Account = model.Account,
-                        createDate = model.CreateDate,
+                        Legal = model.Legal,
+                        Phone = model.Phone,
                         name = model.Name,
-                        orderNo = model.OrderNo,
-                        tradeNo = model.TradeNo,
-                        batchNo = model.BatchNo,
-                        payee = model.Payee,
-                        amount = model.Amount,
-                        state = model.State,
-                        UpLoadState = model.UpLoadState,
-                        UpLoadCount = model.UpLoadCount,
-                        UpLoadError = model.UpLoadError,
-                        UpLoadDate = model.UpLoadDate,
+                        Capital = model.Capital,
+                        CreateDate = model.CreateDate,                        
                         ID = model.ID
                     });
 

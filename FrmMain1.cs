@@ -191,8 +191,6 @@ namespace MyPay
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            me.QCC();
-            return;
             try
             {
                 //时间升序

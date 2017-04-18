@@ -51,12 +51,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lvResult = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnQuery = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.label2);
@@ -289,6 +291,12 @@
             this.columnHeader3.Text = "申请号";
             this.columnHeader3.Width = 120;
             // 
+            // columnHeader9
+            // 
+            this.columnHeader9.DisplayIndex = 2;
+            this.columnHeader9.Text = "申请人";
+            this.columnHeader9.Width = 200;
+            // 
             // columnHeader6
             // 
             this.columnHeader6.DisplayIndex = 1;
@@ -314,12 +322,6 @@
             // 
             this.columnHeader7.Text = "主分类号";
             this.columnHeader7.Width = 100;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.DisplayIndex = 2;
-            this.columnHeader9.Text = "申请人";
-            this.columnHeader9.Width = 200;
             // 
             // panel2
             // 
@@ -391,6 +393,17 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "地址：";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(692, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(245, 10);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "系统自动过滤掉个人|学校|学院|研究院|研究所关键字";
+            // 
             // FrmMain1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -454,5 +467,6 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Label label5;
     }
 }

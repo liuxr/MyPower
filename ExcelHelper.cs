@@ -31,13 +31,15 @@ namespace MyPower
                     var cell = row.CreateCell(0);
                     cell.SetCellValue(m.PatentNo);
                     cell = row.CreateCell(1);
-                    cell.SetCellValue(m.ApplyDate);
-                    cell = row.CreateCell(2);
-                    cell.SetCellValue(m.PatentType);
-                    cell = row.CreateCell(3);
                     cell.SetCellValue(m.Name);
+                    cell = row.CreateCell(2);
+                    cell.SetCellValue(m.ApplyName);
+                    cell = row.CreateCell(3);
+                    cell.SetCellValue(m.Address);
                     cell = row.CreateCell(4);
-                    cell.SetCellValue(m.OrginalNo);
+                    cell.SetCellValue(m.ApplyDate);
+                    cell = row.CreateCell(5);
+                    cell.SetCellValue(m.PatentType);
                 }
 
                 using (var fs = File.OpenWrite(fileName))
@@ -45,7 +47,8 @@ namespace MyPower
                     workbook.Write(fs);   //向打开的这个xls文件中写入mySheet表并保存。
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("导出失败，请重新导出");
             }
         }
@@ -56,17 +59,19 @@ namespace MyPower
             var cell = row.CreateCell(0);
             cell.SetCellValue("申请号");
             cell = row.CreateCell(1);
-            cell.SetCellValue("申请日");
-            cell = row.CreateCell(2);
-            cell.SetCellValue("专利类型");
-            cell = row.CreateCell(3);
             cell.SetCellValue("专利名称");
+            cell = row.CreateCell(2);
+            cell.SetCellValue("申请人");
+            cell = row.CreateCell(3);
+            cell.SetCellValue("地址");
             cell = row.CreateCell(4);
-            cell.SetCellValue("主分类号");
-            for (int i = 0; i < 5; i++)
+            cell.SetCellValue("申请日");
+            cell = row.CreateCell(5);
+            cell.SetCellValue("类型");
+            for (int i = 0; i < 6; i++)
             {
                 var w = 20 * 256;
-                if (i == 3)
+                if (i == 1 || i == 2 || i == 3)
                 {
                     w = 40 * 256;
                 }

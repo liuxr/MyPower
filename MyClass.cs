@@ -184,12 +184,21 @@ namespace MyPower
                 string name = node1_2.InnerText;
                 //地址
                 string address = node5.InnerText;
+                address = address.Split('|')[1];
                 //主分类号
                 string orginalNo = node4_1.InnerText;
                 //申请人
                 string applyName = node3.InnerText;
+
+                //条件过滤 名称长度小于4 或者包含 学院|学校|研究院 过滤掉
+                if (applyName.Trim().Length <= 4 || applyName.Trim().Contains("学院") || applyName.Trim().Contains("学院") || applyName.Trim().Contains("研究院") || applyName.Trim().Contains("研究所"))
+                {
+                    continue;
+                }
+
                 Console.WriteLine( patentNo+" "+name);
                 infoDal.Insert(new Info() { PatentNo = patentNo, ApplyDate = applyDate, PatentType = patentType, Name = name, OrginalNo = orginalNo, Address = address, ApplyName = applyName });
+                //QCC(applyName, patentNo);
             }
         }
 
@@ -228,31 +237,93 @@ namespace MyPower
         }
 
 
-        private string qccUrl = "http://www.qichacha.com/search?key=京东方科技集团股份有限公司";
-        public void QCC()
+        /// <summary>
+        /// 通过企查查查询工商信息
+        /// </summary>
+        public void QCC(string companyName,string patentNo)
         {
+            string qccUrl = string.Format("http://www.qichacha.com/search?key=" + companyName);
+
             HtmlWeb htmlWeb = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument htmlDoc = null;
             htmlDoc = htmlWeb.Load(qccUrl);
+            //查找数量
+            var nodes1= htmlDoc.DocumentNode.SelectSingleNode("//span[@id='countOld']//span[1]");
+
+            //数量
+            int count = Convert.ToInt32(nodes1.InnerText.Trim() ?? "0");
+
+            if (count <= 0) return;
+
             HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//table//tbody//tr");
-            //m_srchList
-            foreach (var node in nodes)
-            {
+
+            if (nodes == null || nodes.Count <= 0) return;
+            var node = nodes[0];//找出第一个匹配的信息
                 var node2 = node.SelectSingleNode("td[2]");
                 string[] sts = node2.InnerText.Split('\n');
-                //法人
+                //法人legal
                 string faren = sts[1].Split('：')[1];
-                //联系方式
+                //联系方式 phone
                 string phone = sts[2].Split('：')[1];
 
                 var node3 = node.SelectSingleNode("td[3]");
-                //注册资金
+                //注册资金 capital
                 string money = node3.InnerText;
 
                 var node4 = node.SelectSingleNode("td[4]");
-                //成立时间
+                //成立时间 createDate
                 string createDate = node4.InnerText;
-            }
+
+            Info model = infoDal.GetOne(patentNo);
+            if (model == null) return;
+            model.Legal = faren;
+            model.Phone = phone;
+            model.Capital = money;
+            model.CreateDate = createDate;
+            infoDal.Update(model);
+        }
+
+        public void QiXin(string companyName, string patentNo)
+        {
+            string qccUrl = string.Format("http://www.qixin.com/search?key={0}&type=enterprise&source=&isGlobal=Y", companyName);
+
+            HtmlWeb htmlWeb = new HtmlWeb();
+            HtmlAgilityPack.HtmlDocument htmlDoc = null;
+            htmlDoc = htmlWeb.Load(qccUrl);
+            //查找数量
+            var nodes1 = htmlDoc.DocumentNode.SelectSingleNode("//span[@id='totalCount']");
+
+            //数量
+            int count = Convert.ToInt32(nodes1.InnerText.Trim() ?? "0");
+
+            if (count <= 0) return;
+
+            HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes("//table//tbody//tr");
+
+            if (nodes == null || nodes.Count <= 0) return;
+            var node = nodes[0];//找出第一个匹配的信息
+            var node2 = node.SelectSingleNode("td[2]");
+            string[] sts = node2.InnerText.Split('\n');
+            //法人legal
+            string faren = sts[1].Split('：')[1];
+            //联系方式 phone
+            string phone = sts[2].Split('：')[1];
+
+            var node3 = node.SelectSingleNode("td[3]");
+            //注册资金 capital
+            string money = node3.InnerText;
+
+            var node4 = node.SelectSingleNode("td[4]");
+            //成立时间 createDate
+            string createDate = node4.InnerText;
+
+            //Info model = infoDal.GetOne(patentNo);
+            //if (model == null) return;
+            //model.Legal = faren;
+            //model.Phone = phone;
+            //model.Capital = money;
+            //model.CreateDate = createDate;
+            //infoDal.Update(model);
         }
     }
 }

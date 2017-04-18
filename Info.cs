@@ -21,5 +21,13 @@ namespace MyPay
         public string ApplyName { get; set; }
 
         public string Address { get; set; }
+
+        public string Legal { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Capital { get; set; }
+
+        public string CreateDate { get; set; }
     }
 }
