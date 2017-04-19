@@ -166,7 +166,7 @@ namespace MyPay
             DialogResult dr = sfd.ShowDialog();
             if (dr == DialogResult.Cancel) return;
 
-            List<Info> list = dal.GetList();
+            List<Info> list = dal.GetList().OrderBy(m=>m.PublishDate).OrderBy(m=>m.ApplyName).ToList();
             ExcelHelper helper = new ExcelHelper(sfd.FileName);
             helper.Export(list);
         }
@@ -203,7 +203,7 @@ namespace MyPay
                 foreach (var m in list)
                 {
                     ListViewItem item = new ListViewItem(new string[] {
-                    m.PatentNo,m.ApplyName,m.Name,m.Address,m.ApplyDate,m.PatentType,m.OrginalNo });
+                    m.PatentNo,m.ApplyName,m.Name,m.Address,m.PublishDate,m.PatentType,m.OrginalNo });
                     lvResult.Items.Add(item);
                 }
                 Application.DoEvents();

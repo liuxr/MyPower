@@ -29,5 +29,7 @@ namespace MyPay
         public string Capital { get; set; }
 
         public string CreateDate { get; set; }
+
+        public string PublishDate { get; set; }
     }
 }

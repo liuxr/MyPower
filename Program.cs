@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPower;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,8 +18,6 @@ namespace MyPay
         [STAThread]
         static void Main()
         {
-            //string strURL = "http://520jingcai.com/index.php?m=Api&c=Alipay&a=alipaylog&inputparam=IWKZZd-XuwSgXLyOweGOGtAKZqr9kwsSsdD9nHz88raSqHCYRqfnn4zVGTuv407XE7RcBwDIHAv7zJ4udOvDSC3LosQQ86yOQHQ1HTrReM-zvWYmSrWs4N6SW-ffXcODOX9lx6exLU64Me021TmmSHEj3J--UskbSaAcvJm4D9kjJxARJl0NaBCvtdyZFmsuuqK5vGaHEBFXwFH05ApGp-iCXXjh98VpBeKmAlwkgZXf27fp4_Gg5PwOvEDiwWcOH911xhPl1IiC-_e8ynO5AZ-8I--UjWeoiUbZUYooM6j6em8dlBKz1c4v-dUE0vDeB8I2aJWx0yL4GwYl6Gg-j5avabb29Kn9SG1MMsbKhVNKj9Q3cIr2Cekjdyilb4HqsdD9nHz88rZvyXRRvASgAy6oSMmv87nB_k8xSFNIDKEg6Fg07HgQfS_6OjZ-8-DA";
-            //string result = Request.Get(strURL);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain1());

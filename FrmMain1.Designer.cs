@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -89,6 +89,17 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("宋体", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(692, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(245, 10);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "系统自动过滤掉个人|学校|学院|研究院|研究所关键字";
+            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(469, 9);
@@ -101,20 +112,20 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(268, 10);
+            this.txtDate.Location = new System.Drawing.Point(285, 10);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(100, 21);
             this.txtDate.TabIndex = 4;
-            this.txtDate.Text = "2017";
+            this.txtDate.Text = "201701";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(207, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(83, 12);
             this.label2.TabIndex = 3;
-            this.label2.Text = "申请日：";
+            this.label2.Text = "公开/公告日：";
             // 
             // textBox1
             // 
@@ -310,7 +321,7 @@
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "申请日";
+            this.columnHeader4.Text = "公开/公告日";
             this.columnHeader4.Width = 100;
             // 
             // columnHeader5
@@ -360,7 +371,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(268, 9);
+            this.textBox2.Location = new System.Drawing.Point(286, 10);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 4;
@@ -371,9 +382,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(207, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(83, 12);
             this.label3.TabIndex = 3;
-            this.label3.Text = "申请日：";
+            this.label3.Text = "公开/公告日：";
             // 
             // textBox3
             // 
@@ -392,17 +403,6 @@
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 1;
             this.label4.Text = "地址：";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(692, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(245, 10);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "系统自动过滤掉个人|学校|学院|研究院|研究所关键字";
             // 
             // FrmMain1
             // 

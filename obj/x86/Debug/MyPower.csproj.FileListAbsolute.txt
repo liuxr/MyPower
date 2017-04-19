@@ -1,6 +1,3 @@
-F:\MyPower\MyPower\bin\Debug\MyPower.exe.config
-F:\MyPower\MyPower\bin\Debug\MyPower.exe
-F:\MyPower\MyPower\bin\Debug\MyPower.pdb
 F:\MyPower\MyPower\bin\Debug\Dapper.dll
 F:\MyPower\MyPower\bin\Debug\HtmlAgilityPack.dll
 F:\MyPower\MyPower\bin\Debug\ICSharpCode.SharpZipLib.dll
@@ -21,6 +18,9 @@ F:\MyPower\MyPower\obj\x86\Debug\MyPay.FrmMain1.resources
 F:\MyPower\MyPower\obj\x86\Debug\MyPay.FrmMain.resources
 F:\MyPower\MyPower\obj\x86\Debug\MyPower.Properties.Resources.resources
 F:\MyPower\MyPower\obj\x86\Debug\MyPower.csproj.GenerateResource.Cache
-F:\MyPower\MyPower\obj\x86\Debug\MyPower.exe
-F:\MyPower\MyPower\obj\x86\Debug\MyPower.pdb
+F:\MyPower\MyPower\bin\Debug\知识产权采集Demo.exe.config
+F:\MyPower\MyPower\bin\Debug\知识产权采集Demo.exe
+F:\MyPower\MyPower\bin\Debug\知识产权采集Demo.pdb
 F:\MyPower\MyPower\obj\x86\Debug\MyPower.csprojResolveAssemblyReference.cache
+F:\MyPower\MyPower\obj\x86\Debug\知识产权采集Demo.exe
+F:\MyPower\MyPower\obj\x86\Debug\知识产权采集Demo.pdb

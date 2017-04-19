@@ -22,7 +22,9 @@ namespace MyPower
 
         private string Year = "2017";
 
-        private string urlTemp = "http://so.baiten.cn/results?q=ad%253A%2528{0}%2529%2520and%2520aa%253A%2528%25u5317%25u4EAC%25u5E02%2529&type=14&s=0&law=0&v=s";
+        //private string urlTemp = "http://so.baiten.cn/results?q=pd%253A%2528{0}%2529%2520and%2520aa%253A%2528%25u5317%25u4EAC%25u5E02%2529&type=14&s=0&law=0&v=s";
+
+        private string urlTemp = "http://so.baiten.cn/results?q=pd%253A%2528{0}%2529%2520and%2520aa%253A%2528%25u5317%25u4EAC%25u5E02%2529&type=14&s=3&law=0&v=s";
 
         public void Run(string year)
         {
@@ -127,7 +129,6 @@ namespace MyPower
             DetailView(htmlDoc);
 
             if (onComplate != null)
-
             {
                 onComplate(guid,url);
             }
@@ -170,8 +171,10 @@ namespace MyPower
                 var node4 = n.SelectSingleNode("ul//li[4]//a[1]");
                 //主分类号
                 var node4_1 = n.SelectSingleNode("ul//li[4]//a[2]");
-                //地址
+                //公开日
                 var node5 = n.SelectSingleNode("ul//li[5]//a");
+                //地址
+                var node6 = n.SelectSingleNode("ul//li[6]//a");
                 //序号
                // string sNo = node1_1.InnerText;
                 //获取了专利号(申请号)
@@ -182,22 +185,24 @@ namespace MyPower
                 string patentType = node1_1.InnerText;
                 //名称
                 string name = node1_2.InnerText;
+                //公开公告日
+                string publishDate = node5.InnerText;
                 //地址
-                string address = node5.InnerText;
+                string address = node6.InnerText;
                 address = address.Split('|')[1];
                 //主分类号
                 string orginalNo = node4_1.InnerText;
                 //申请人
                 string applyName = node3.InnerText;
+              
 
                 //条件过滤 名称长度小于4 或者包含 学院|学校|研究院 过滤掉
-                if (applyName.Trim().Length <= 4 || applyName.Trim().Contains("学院") || applyName.Trim().Contains("学院") || applyName.Trim().Contains("研究院") || applyName.Trim().Contains("研究所"))
-                {
+                if (!Filter(applyName)) {
                     continue;
                 }
 
                 Console.WriteLine( patentNo+" "+name);
-                infoDal.Insert(new Info() { PatentNo = patentNo, ApplyDate = applyDate, PatentType = patentType, Name = name, OrginalNo = orginalNo, Address = address, ApplyName = applyName });
+                infoDal.Insert(new Info() { PatentNo = patentNo, ApplyDate = applyDate, PatentType = patentType, Name = name, OrginalNo = orginalNo, Address = address, ApplyName = applyName,PublishDate=publishDate });
                 //QCC(applyName, patentNo);
             }
         }
@@ -234,6 +239,18 @@ namespace MyPower
                 Console.WriteLine(sNo + "  " + patentNo);
                 infoDal.Insert(new Info() { PatentNo = patentNo,ApplyDate=applyDate,PatentType=patentType,Name=name,OrginalNo=orginalNo });
             }
+        }
+        public int GetRandom() {
+            Random random = new Random();
+            return random.Next(100, 999);
+        }
+
+        public void Detail(string patentNo) {
+            string urlDetail = "http://so.baiten.cn/detail/detail?id=" + patentNo + "&type=14&rd=" + GetRandom() + "";
+            HtmlWeb htmlWeb = new HtmlWeb();
+            HtmlAgilityPack.HtmlDocument htmlDoc = null;
+            htmlDoc = htmlWeb.Load(urlDetail);
+
         }
 
 
@@ -324,6 +341,16 @@ namespace MyPower
             //model.Capital = money;
             //model.CreateDate = createDate;
             //infoDal.Update(model);
+        }
+        //public string[] filterNames = new string[] {"学院" };
+        public bool Filter(string applyName)
+        {
+            //if (applyName.Trim().Length <= 4 || applyName.Trim().Contains("学院") || applyName.Trim().Contains("学院") || applyName.Trim().Contains("研究院") || applyName.Trim().Contains("研究所"))
+            if (applyName.Trim().Length <= 4 || applyName.Trim().Contains("学校"))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
